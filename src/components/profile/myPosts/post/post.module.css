@@ -1,7 +1,4 @@
-.item {
+.post {
     color: white;
-}
-.item img {
-    width: 50px;
-    height: auto;
+    margin-top: 5%
 }
