@@ -1,14 +1,18 @@
 import React from 'react';
 import {MyPosts} from "./myPosts/MyPosts";
-import s from './Profile.module.css'
 import {ProfileInfo} from "./profileInfo/ProfileInfo";
+import {MyPostType, PostType} from '../../Types';
 
-export const Profile = () => {
+export type  ProfileType = {
+    posts: PostType[]
+}
+
+export const Profile = (props: ProfileType) => {
 
     return (
-        <div className={s.content}>
+        <div>
         <ProfileInfo />
-            <MyPosts/>
+            <MyPosts posts = {props.posts} />
 
         </div>
     )
