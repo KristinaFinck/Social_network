@@ -9,11 +9,11 @@ import {News} from "./components/news/News";
 import {Music} from "./components/music/Music";
 import {Settings} from "./components/settings/Settings";
 import {MyPostType, PostType} from "./Types";
-import {DialogType, MessageType} from "./index";
-import {StateType} from "./redax/state";
+import {DialogType, MessageType} from "./Types";
+import {StateType} from "./Types";
 
 type AppType = {
- appState: StateType
+    state: StateType
 }
 
 export const App = (props: AppType) => {
@@ -27,10 +27,9 @@ export const App = (props: AppType) => {
                     <Routes>
                         <Route path='/dialogs'
                                render={() => <Dialogs
-                                   dialogs={props.appState.dialogs}
-                                   messages={props.appState.messages}/>}/>
-                        <Route path='/profile' render={() => <Profile
-                            posts={props.appState.posts}/>}/>
+                                   state={props.state.dialogsPage}/>}/>
+                        <Route path='/profile' render={() =>
+                            <Profile state={props.state.profilePage}/>}/>
                         <Route path='/news' render={() => <News/>}/>
                         <Route path='/music' render={() => <Music/>}/>
                         <Route path='/settings' render={() => <Settings/>}/>
