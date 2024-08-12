@@ -2,7 +2,7 @@ import React from 'react';
 import s from './Dialogs.module.css';
 import {NavLink} from "react-router-dom";
 import path from "path";
-import {dialogsData, messagesData} from '../../index';
+import {state} from '../../redax/state';
 import {DialogsDataType, MessageType} from "../../index";
 
 
@@ -22,8 +22,8 @@ export const Message = (props:MessageType) => {
 export const Dialogs = (props: DialogsDataType) => {
 
 
-    let dialogElement = dialogsData.map(dialog => (<DialogItem id = {dialog.id} name = {dialog.name} />));
-  let messageElement = messagesData.map( message => (<Message message = {message.message}/>));
+    let dialogElement = state.dialogs.map(dialog => (<DialogItem id = {dialog.id} name = {dialog.name} />));
+  let messageElement = state.messages.map( message => (<Message message = {message.message}/>));
     return (
         <div className={s.dialogs}>
             <div className={s.dialogsItems}>

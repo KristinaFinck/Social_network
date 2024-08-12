@@ -10,11 +10,10 @@ import {Music} from "./components/music/Music";
 import {Settings} from "./components/settings/Settings";
 import {MyPostType, PostType} from "./Types";
 import {DialogType, MessageType} from "./index";
+import {StateType} from "./redax/state";
 
 type AppType = {
-    posts: PostType[]
-    dialogs: DialogType[],
-    messagesData: MessageType[]
+ appState: StateType
 }
 
 export const App = (props: AppType) => {
@@ -27,8 +26,11 @@ export const App = (props: AppType) => {
                 <div className='app-content-wrapper'>
                     <Routes>
                         <Route path='/dialogs'
-                               render={() => <Dialogs dialogs={props.dialogs} messagesData={props.messagesData}/>}/>
-                        <Route path='/profile' render={() => <Profile posts={props.posts}/>}/>
+                               render={() => <Dialogs
+                                   dialogs={props.appState.dialogs}
+                                   messages={props.appState.messages}/>}/>
+                        <Route path='/profile' render={() => <Profile
+                            posts={props.appState.posts}/>}/>
                         <Route path='/news' render={() => <News/>}/>
                         <Route path='/music' render={() => <Music/>}/>
                         <Route path='/settings' render={() => <Settings/>}/>

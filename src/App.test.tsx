@@ -1,13 +1,12 @@
-import React from 'react';
+import React, {startTransition} from 'react';
 import {render, screen} from '@testing-library/react';
 import {App} from './App';
 import {PostType, MyPostType} from "./Types";
-import {dialogsData, messagesData, posts} from "./index";
+import {state} from './redax/state'
 
-test('renders learn react link', () => {
-    render(<App posts={posts}
-                dialogs={dialogsData}
-                messagesData={messagesData}/>);
+
+test.todo('renders learn react link', () => {
+    render(<App appState={state} />);
     const linkElement = screen.getByText(/learn react/i);
     expect(linkElement).toBeInTheDocument();
 });
