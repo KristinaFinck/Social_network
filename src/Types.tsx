@@ -22,7 +22,8 @@ export type MyPostType = {
 };
 export type DialogType = {
     id: number,
-    name: string
+    name: string,
+    avatar?: string
 };
 export type MessageType = {
     message: string

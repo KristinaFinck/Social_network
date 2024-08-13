@@ -1,10 +1,15 @@
 .dialogs {
-    display: grid;
-    grid-template-columns: 2fr 10fr;
-    padding: 20px;
-
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
 }
-
+.avatar {
+    width: 1em;
+}
+.dialogWithMessage {
+    display: flex;
+    justify-content: space-evenly;
+}
 .dialog {
 
 }
@@ -15,6 +20,10 @@
     color: goldenrod;
     text-decoration: none;
 }
+.dialogsItems img {
+    width: 1em;
+
+}
 
 .active{
     color: white;
@@ -23,8 +32,12 @@
     padding: 20px;
 }
 
-.messages .message {
-
+.message {
+ border: 1px solid salmon;
+    border-radius: 5px;
+    background-color: antiquewhite;
+    padding: 5%
+;
 }
 .postBlock {
     padding: 10px;

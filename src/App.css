@@ -1,5 +1,6 @@
 .app-wrapper {
   width: 100%;
+  height: 100%;
   max-width: 980px;
   display: grid;
 grid-template-areas:
@@ -9,11 +10,10 @@ grid-template-areas:
   margin-left: auto;
   grid-template-rows: 60px 1fr;
   grid-template-columns: 2fr 10fr;
-
-
 }
 
 .app-content-wrapper {
   grid-area: c;
   background-color: brown;
+  height: 100%;
 }
