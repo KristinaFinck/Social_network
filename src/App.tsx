@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import {Header} from "./components/header/Header";
-import {Navbar} from "./components/navbar/Navbar";
+import {Navbar} from "./components/sideBar/navbar/Navbar";
 import {Profile} from "./components/profile/Profile";
 import {Dialogs} from "./components/dialogs/Dialogs";
 import {BrowserRouter, Route, Switch as Routes} from "react-router-dom";
@@ -11,6 +11,7 @@ import {Settings} from "./components/settings/Settings";
 import {MyPostType, PostType} from "./Types";
 import {DialogType, MessageType} from "./Types";
 import {StateType} from "./Types";
+import {SideBar} from "./components/sideBar/SideBar";
 
 type AppType = {
     state: StateType
@@ -22,7 +23,7 @@ export const App = (props: AppType) => {
         <BrowserRouter>
             <div className="app-wrapper">
                 <Header/>
-                <Navbar/>
+                <SideBar/>
                 <div className='app-content-wrapper'>
                     <Routes>
                         <Route path='/dialogs'

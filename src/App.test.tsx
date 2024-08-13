@@ -5,8 +5,8 @@ import {PostType, MyPostType} from "./Types";
 import {state} from './redax/state'
 
 
-test.todo('renders learn react link', () => {
-    render(<App appState={state} />);
+test.skip('renders learn react link', () => {
+    render(<App state={state} />);
     const linkElement = screen.getByText(/learn react/i);
     expect(linkElement).toBeInTheDocument();
 });

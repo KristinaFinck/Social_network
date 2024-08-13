@@ -2,6 +2,7 @@
 export type StateType = {
     profilePage: ProfilePageType
     dialogsPage: DialogsPageType
+    sideBar: FriendsType
 }
 export type ProfilePageType = {
     posts: PostType[]
@@ -28,4 +29,12 @@ export type MessageType = {
 }
 export type  ProfileType = {
     posts: PostType[]
+}
+export type FriendsType = {
+    friends: FriendType[]
+}
+export type FriendType = {
+    id: number
+    name: string
+    avatar: string; // URL или путь к изображению
 }
