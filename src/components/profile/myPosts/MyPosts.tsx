@@ -1,19 +1,20 @@
-import React from "react";
+import React, {useRef} from "react";
 import s from './myPosts.module.css';
 import {Post} from "./post/Post";
+import {MyPostType} from "../../../Types";
+import {addPost} from "../../../redax/state";
 
-export type MyPostType = {
-    posts: PostType[]
-};
-export type PostType = {
-    id: number,
-    message: string,
-    likesCount: number
-};
+
 export const MyPosts = (props: MyPostType) => {
 
-    let postElement = props.posts.map((p) => (<Post id={p.id} message={p.message} likesCount = {p.likesCount}/>))
-
+    let postElement = props.posts.map((p) => (<Post id={p.id} postMessage={p.postMessage} likesCount = {p.likesCount}/>))
+    const newPostElement = useRef<HTMLTextAreaElement>(null);
+  const onAddPost = () => {
+      // Получаем значение из textarea
+        const newPostMessage = newPostElement.current?.value || '';
+      // Вызываем функцию добавления поста, передавая текст
+        props.addPost(newPostMessage)
+  }
     return (
         <div className={s.postsBlock}>
            <h3>My posts</h3>
@@ -21,7 +22,7 @@ export const MyPosts = (props: MyPostType) => {
                 <textarea></textarea>
             </div>
             <div>
-                <button>Add post</button>
+                <button onClick={onAddPost}>Add post</button>
             </div>
             <div>
                 <div className={s.posts}>

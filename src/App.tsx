@@ -12,15 +12,17 @@ import {MyPostType, PostType} from "./Types";
 import {DialogType, MessageType} from "./Types";
 import {StateType} from "./Types";
 import {SideBar} from "./components/sideBar/SideBar";
+import {addPost} from "./redax/state";
 
 type AppType = {
     state: StateType
+    addPost: (postMessage: string) => void
 }
 
 export const App = (props: AppType) => {
 
     return (
-        <BrowserRouter>
+
             <div className="app-wrapper">
                 <Header/>
                 <SideBar/>
@@ -30,14 +32,14 @@ export const App = (props: AppType) => {
                                render={() => <Dialogs
                                    state={props.state.dialogsPage}/>}/>
                         <Route path='/profile' render={() =>
-                            <Profile state={props.state.profilePage}/>}/>
+                            <Profile posts={props.state.profilePage.posts} addPost = {props.addPost}/>}/>
                         <Route path='/news' render={() => <News/>}/>
                         <Route path='/music' render={() => <Music/>}/>
                         <Route path='/settings' render={() => <Settings/>}/>
                     </Routes>
                 </div>
             </div>
-        </BrowserRouter>
+
     );
 }
 

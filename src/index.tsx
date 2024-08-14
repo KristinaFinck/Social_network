@@ -3,7 +3,8 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 import {App} from './App';
-import {state} from './redax/state'
+import {addPost, state} from './redax/state'
+import {BrowserRouter} from "react-router-dom";
 
 const root = ReactDOM.createRoot(
     document.getElementById('root') as HTMLElement
@@ -18,7 +19,9 @@ const root = ReactDOM.createRoot(
 // Рендеринг приложения
 root.render(
     <React.StrictMode>
-        <App state={state}/>
+        <BrowserRouter>
+        <App state={state} addPost = {addPost}/>
+        </BrowserRouter>
     </React.StrictMode>
 );
 

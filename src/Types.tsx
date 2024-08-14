@@ -11,15 +11,6 @@ export type DialogsPageType = {
     dialogs: DialogType[]
     messages: MessageType[]
 }
-export type PostType = {
-    id: number,
-    message: string,
-    likesCount: number
-};
-
-export type MyPostType = {
-    posts: PostType[]
-};
 export type DialogType = {
     id: number,
     name: string,
@@ -30,6 +21,7 @@ export type MessageType = {
 }
 export type  ProfileType = {
     posts: PostType[]
+    addPost: (postMessage: string) => void
 }
 export type FriendsType = {
     friends: FriendType[]
@@ -39,3 +31,12 @@ export type FriendType = {
     name: string
     avatar: string; // URL или путь к изображению
 }
+export type MyPostType = {
+    posts: PostType[]
+    addPost: (postMessage: string) => void
+};
+export type PostType = {
+    id: number,
+    postMessage: string,
+    likesCount: number
+};

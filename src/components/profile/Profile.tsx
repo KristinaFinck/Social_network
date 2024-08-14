@@ -1,17 +1,18 @@
 import React from 'react';
 import {MyPosts} from "./myPosts/MyPosts";
 import {ProfileInfo} from "./profileInfo/ProfileInfo";
-import {MyPostType, PostType, ProfilePageType} from '../../Types';
+import {MyPostType, PostType, ProfilePageType, ProfileType} from '../../Types';
+import {addPost} from "../../redax/state";
 
 
+export const Profile = (props: ProfileType) => {
 
-export const Profile = (props:{state:ProfilePageType}) => {
 
     return (
         <div>
-        <ProfileInfo />
-            <MyPosts posts = {props.state.posts} />
+            <ProfileInfo/>
+            <MyPosts posts={props.posts} addPost={addPost}/>
 
         </div>
     )
-}
+};
