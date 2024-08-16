@@ -13,13 +13,16 @@ export const MyPosts = (props: MyPostType) => {
       // Получаем значение из textarea
         const newPostMessage = newPostElement.current?.value || '';
       // Вызываем функцию добавления поста, передавая текст
-        props.addPost(newPostMessage)
-  }
+        props.addPost(newPostMessage);
+      // Очищаем текстовое поле после добавления поста, если ref не null
+      if (newPostElement.current) {
+          newPostElement.current.value = '';  // Это удалит текст из textarea
+  }}
     return (
         <div className={s.postsBlock}>
            <h3>My posts</h3>
             <div>
-                <textarea></textarea>
+                <textarea ref = {newPostElement}></textarea>
             </div>
             <div>
                 <button onClick={onAddPost}>Add post</button>
