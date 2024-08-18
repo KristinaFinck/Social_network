@@ -1,3 +1,4 @@
+import {updateNewPostText} from "./redax/state";
 
 export type StateType = {
     profilePage: ProfilePageType
@@ -6,6 +7,7 @@ export type StateType = {
 }
 export type ProfilePageType = {
     posts: PostType[]
+    newPostText: string
 }
 export type DialogsPageType = {
     dialogs: DialogType[]
@@ -20,8 +22,9 @@ export type MessageType = {
     message: string
 }
 export type  ProfileType = {
-    posts: PostType[]
+    profilePage: ProfilePageType;
     addPost: (postMessage: string) => void
+    updateNewPostText: (newText:string) => void
 }
 export type FriendsType = {
     friends: FriendType[]
@@ -33,7 +36,9 @@ export type FriendType = {
 }
 export type MyPostType = {
     posts: PostType[]
+    newPostText: string;
     addPost: (postMessage: string) => void
+    updateNewPostText: (newPostText:string) => void
 };
 export type PostType = {
     id: number,

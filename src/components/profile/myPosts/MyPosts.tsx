@@ -10,19 +10,26 @@ export const MyPosts = (props: MyPostType) => {
     let postElement = props.posts.map((p) => (<Post id={p.id} postMessage={p.postMessage} likesCount = {p.likesCount}/>))
     const newPostElement = useRef<HTMLTextAreaElement>(null);
   const onAddPost = () => {
-      // Получаем значение из textarea
-        const newPostMessage = newPostElement.current?.value || '';
-      // Вызываем функцию добавления поста, передавая текст
-        props.addPost(newPostMessage);
-      // Очищаем текстовое поле после добавления поста, если ref не null
-      if (newPostElement.current) {
-          newPostElement.current.value = '';  // Это удалит текст из textarea
-  }}
+      let text = props.newPostText;  // Получаем текст из состояния
+      if (text.trim()) {  // Проверка на пустую строку
+          props.addPost(text);  // Добавляем пост
+          props.updateNewPostText('');  // Очищаем состояние, что приводит к очищению textarea
+      }
+  };
+
+    let onPostChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
+        let newPostText = event.target.value;  // Получаем значение из события onChange
+        props.updateNewPostText(newPostText);
+
+    }
     return (
         <div className={s.postsBlock}>
            <h3>My posts</h3>
             <div>
-                <textarea ref = {newPostElement}></textarea>
+                <textarea ref = {newPostElement}
+                          onChange={onPostChange}
+                          value = {props.newPostText}
+                />
             </div>
             <div>
                 <button onClick={onAddPost}>Add post</button>
