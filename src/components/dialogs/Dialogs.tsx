@@ -2,7 +2,7 @@ import React from 'react';
 import s from './Dialogs.module.css';
 import {NavLink} from "react-router-dom";
 import path from "path";
-import {state} from '../../redax/state';
+import store from '../../redax/state';
 import {DialogsPageType, MessageType, DialogType, StateType} from "../../Types";
 
 

@@ -2,7 +2,7 @@ import React, {useRef} from "react";
 import s from './myPosts.module.css';
 import {Post} from "./post/Post";
 import {MyPostType} from "../../../Types";
-import {addPost} from "../../../redax/state";
+import store from "../../../redax/state";
 
 
 export const MyPosts = (props: MyPostType) => {

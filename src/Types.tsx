@@ -1,5 +1,3 @@
-import {updateNewPostText} from "./redax/state";
-
 export type StateType = {
     profilePage: ProfilePageType
     dialogsPage: DialogsPageType

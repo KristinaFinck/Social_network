@@ -2,7 +2,7 @@ import React from 'react';
 import {MyPosts} from "./myPosts/MyPosts";
 import {ProfileInfo} from "./profileInfo/ProfileInfo";
 import {MyPostType, PostType, ProfilePageType, ProfileType} from '../../Types';
-import {addPost, updateNewPostText} from "../../redax/state";
+import store from "../../redax/state";
 
 
 export const Profile = (props: ProfileType) => {
@@ -14,8 +14,8 @@ export const Profile = (props: ProfileType) => {
             <MyPosts
                 posts={props.profilePage.posts}
                 newPostText={props.profilePage.newPostText}
-                     updateNewPostText = {updateNewPostText}
-                     addPost={addPost}/>
+                     updateNewPostText = {store.updateNewPostText}
+                     addPost={store.addPost}/>
 
         </div>
     )

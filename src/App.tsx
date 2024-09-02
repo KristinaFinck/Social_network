@@ -12,7 +12,7 @@ import {MyPostType, PostType, ProfilePageType, ProfileType} from "./Types";
 import {DialogType, MessageType} from "./Types";
 import {StateType} from "./Types";
 import {SideBar} from "./components/sideBar/SideBar";
-import {addPost, updateNewPostText} from "./redax/state";
+
 
 type AppType = {
     state: StateType

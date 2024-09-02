@@ -2,7 +2,7 @@
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 
-import store, {addPost, state, subscribe, updateNewPostText} from './redax/state'
+import store from './redax/state'
 import {StateType} from "./Types";
 import React from "react";
 import ReactDOM from "react-dom";
@@ -14,8 +14,8 @@ export let rerenderEntireTree = (state: StateType) => {
     ReactDOM.render(
             <BrowserRouter>
                 <App state={store.getState()}
-                     addPost={store.addPost}
-                     updateNewPostText = {store.updateNewPostText}
+                     addPost={store.addPost.bind(store)}
+                     updateNewPostText = {store.updateNewPostText.bind(store)}
                 />
             </BrowserRouter>, root
     );
@@ -24,7 +24,7 @@ export let rerenderEntireTree = (state: StateType) => {
 // Инициализируем первое рендеринг приложения
 rerenderEntireTree(store.getState());
 // Подписываем функцию рендера на изменения состояния
-store.subscribe(rerenderEntireTree);
+store.subscribe(() => rerenderEntireTree(store.getState()));
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
