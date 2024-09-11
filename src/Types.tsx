@@ -1,11 +1,29 @@
+export type StoreType = {
+    _state: StateType
+    _callSubscriber: () => void
+    subscribe: (callback: () => void) => void
+    getState: () => StateType
+    dispatch: (action: ActionsTypes) => void
+}
+export type ActionsTypes = AddPostActionType | UpdateNewPostActionType
 export type StateType = {
     profilePage: ProfilePageType
     dialogsPage: DialogsPageType
     sideBar: FriendsType
 }
+export type AddPostActionType = {
+    type: 'ADD-POST'
+
+}
+
+export type UpdateNewPostActionType = {
+    type: 'UPDATE-NEW-POST-TEXT'
+    newText: string
+}
 export type ProfilePageType = {
     posts: PostType[]
     newPostText: string
+
 }
 export type DialogsPageType = {
     dialogs: DialogType[]
@@ -21,8 +39,7 @@ export type MessageType = {
 }
 export type  ProfileType = {
     profilePage: ProfilePageType;
-    addPost: (postMessage: string) => void
-    updateNewPostText: (newText:string) => void
+   dispatch: (action:ActionsTypes) => void
 }
 export type FriendsType = {
     friends: FriendType[]
@@ -35,8 +52,7 @@ export type FriendType = {
 export type MyPostType = {
     posts: PostType[]
     newPostText: string;
-    addPost: (postMessage: string) => void
-    updateNewPostText: (newPostText:string) => void
+    dispatch: (action: ActionsTypes) => void
 };
 export type PostType = {
     id: number,

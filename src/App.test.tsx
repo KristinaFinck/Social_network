@@ -6,7 +6,7 @@ import store from './redax/state'
 
 
 test.skip('renders learn react link', () => {
-    render(<App state={store._state} addPost={store.addPost} updateNewPostText={store.updateNewPostText}/>);
+    render(<App state={store._state} dispatch={store.dispatch}/>);
     const linkElement = screen.getByText(/learn react/i);
     expect(linkElement).toBeInTheDocument();
 });

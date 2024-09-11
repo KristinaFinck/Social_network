@@ -7,21 +7,21 @@ import store from "../../../redax/state";
 
 export const MyPosts = (props: MyPostType) => {
 
-    let postElement = props.posts.map((p) => (<Post id={p.id} postMessage={p.postMessage} likesCount = {p.likesCount}/>))
+    let postElement = props.posts.map((p) => (<Post key={p.id} id={p.id} postMessage={p.postMessage} likesCount = {p.likesCount}/>))
     const newPostElement = useRef<HTMLTextAreaElement>(null);
   const onAddPost = () => {
-      let text = props.newPostText;  // Получаем текст из состояния
-      if (text.trim()) {  // Проверка на пустую строку
-          props.addPost(text);  // Добавляем пост
-          props.updateNewPostText('');  // Очищаем состояние, что приводит к очищению textarea
+      // let text = props.newPostText;  // Получаем текст из состояния
+      // if (text.trim()) {  // Проверка на пустую строку
+      //     props.addPost(text);  // Добавляем пост
+      //     props.updateNewPostText('');  // Очищаем состояние, что приводит к очищению textarea
+     props.dispatch({type: 'ADD-POST'})
       }
-  };
 
     let onPostChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
-        let newPostText = event.target.value;  // Получаем значение из события onChange
-        props.updateNewPostText(newPostText);
-
+        const text = event.target.value;
+        props.dispatch({type: 'UPDATE-NEW-POST-TEXT', newText: text})
     }
+
     return (
         <div className={s.postsBlock}>
            <h3>My posts</h3>
