@@ -13,7 +13,6 @@ export type StateType = {
 }
 export type AddPostActionType = {
     type: 'ADD-POST'
-
 }
 
 export type UpdateNewPostActionType = {
